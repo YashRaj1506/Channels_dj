@@ -1,7 +1,7 @@
 import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
-
+from .models import Text
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -32,9 +32,19 @@ class ChatConsumer(WebsocketConsumer):
                 "message": message
             }
         )
+
+        message_store = Text.objects.create(
+            body = message
+        ),
     
     def chat_message(self, event):
         message = event['message']
+
         
         # Send message to WebSocket
         self.send(text_data=json.dumps({"message": message}))
+
+
+        message_store_2 = Text.objects.create(
+            body = message
+        )
