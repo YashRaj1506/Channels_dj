@@ -39,6 +39,7 @@
         console.log('Chat socket closed unexpectedly');
     };
 
+    
     // on receiving message on group
     chatSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
