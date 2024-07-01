@@ -45,6 +45,6 @@ class ChatConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({"message": message}))
 
 
-        message_store_2 = Text.objects.create(
-            body = message
-        )
+        # message_store_2 = Text.objects.create(
+        #     body = message
+        # )
